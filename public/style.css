@@ -1,0 +1,18 @@
+@import 'https://fonts.googleapis.com/css?family=Poppins';
+
+body{
+    background:#32213A;
+    font-family: 'Poppins', sans-serif;
+    color:#80475E;
+}
+
+
+
+h1{
+    text-align: center;
+}
+
+code{
+    color:#c7254e;
+    background:#f9f2f4;
+}

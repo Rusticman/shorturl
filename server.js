@@ -3,13 +3,14 @@ var parseFunc = require('./parse.js')
 var mongodb = require('mongodb');
 var express = require('express');
 var app = express();
+var path  = require('path');
 app.set('port', (process.env.PORT || 5000));
 
 
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
 var MongoClient = mongodb.MongoClient;
 
-// Connection URL. This is where your mongodb server is running.
+
 
 
 var url = url.URL,urlProtected = 'mongodb://username:password@ds031835.mlab.com:31835/rusticdb';
@@ -25,9 +26,21 @@ var url = url.URL,urlProtected = 'mongodb://username:password@ds031835.mlab.com:
 var collection = db.collection('shorturl');
 
 app.get('/',function(req,res){
-  res.send('with ya in just a mo')
-})
 
+var file = path.join(__dirname+'/index.html');
+
+res.sendFile(file, function(err){
+  if(err){
+    console.log('there was an error: '+err);
+  }
+else{
+  console.log('homepage sent')
+}
+
+});
+
+});
+app.use(express.static('public'));
 //this is for url with one param
 app.get('/:first', function (req,res) {
 var str1 = req.params.first;

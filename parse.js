@@ -1,14 +1,6 @@
 
 
 var errResult = {error:'Web address is erroneous, please reformat'};
-var count=0;
-
-var countUp = function(){
-  count++;
-  return count;
-}
-
-
 
 var funcURL = function shortenurl(app,db,collection){
 
@@ -26,9 +18,16 @@ if(str1 !== 'new'){
  var pattern = new RegExp(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/);
 
 if(pattern.test(str2)){
-  var num = countUp();
-  collection.insertOne({number:num,url:str2})
-	return res.json({original_url:str2, short_url:'https://www.shorturl-rustic.herokuapp.com/'+num});
+    collection.findOneAndUpdate({"totalNum":{$exists:true}},{$inc:{"totalNum":1}},{projection:{"totalNum":true},returnNewDocument:true},function(err,doc){
+      if(err){
+        throw error;
+      }
+      console.log(doc.value.totalNum)
+      collection.insertOne({number:doc.value.totalNum,url:str2})
+      return res.json({original_url:str2, short_url:'https://www.shorturl-rustic.herokuapp.com/'+doc.value.totalNum});
+  });
+
+
 }
 	else{
 	return res.json(errResult);
