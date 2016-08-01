@@ -12,7 +12,7 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 
 
-var url = url.URL,urlProtected = 'mongodb://rusticman:password@ds031835.mlab.com:31835/rusticdb';
+var url = url.URL,urlProtected = 'mongodb://username:password@ds031835.mlab.com:31835/rusticdb';
 
 
 // Use connect method to connect to the Server
