@@ -31,7 +31,7 @@ https://shorturl-rustic.herokuapp.com/new/http://www.digg.com
 https://shorturl-rustic.herokuapp.com/5
 ```
 
-##Will redirect to:
+#Will redirect to:
 
 ```
 https://www.digg.com
