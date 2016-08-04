@@ -1,4 +1,4 @@
-#Shortern URL Microservice
+#Shorten URL Microservice
 
 ##Heroku app
 
